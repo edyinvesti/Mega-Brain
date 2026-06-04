@@ -1,0 +1,17 @@
+{
+  "id": "cobertura-recreio",
+  "titulo": "Cobertura Duplex de Luxo no Recreio",
+  "localizacao": "Recreio dos Bandeirantes, Rio de Janeiro",
+  "quartos": 3,
+  "suites": 3,
+  "vagas": 2,
+  "caracteristicas": [
+    "Piscina privativa",
+    "Vista para o mar",
+    "Prédio novo",
+    "Total lazer",
+    "Duplex"
+  ],
+  "preco": "Sob consulta",
+  "descricao_curta": "Um refúgio de luxo com vista definitiva para o mar."
+}

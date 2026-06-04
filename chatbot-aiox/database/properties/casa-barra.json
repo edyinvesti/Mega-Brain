@@ -1,0 +1,18 @@
+{
+  "id": "casa-barra",
+  "titulo": "Mansão em Condomínio na Barra da Tijuca",
+  "localizacao": "Barra da Tijuca, Rio de Janeiro",
+  "quartos": 5,
+  "suites": 5,
+  "vagas": 4,
+  "caracteristicas": [
+    "Condomínio fechado",
+    "Segurança 24h",
+    "Piscina e Sauna",
+    "Espaço Gourmet",
+    "Energia solar",
+    "Acabamento em mármore"
+  ],
+  "preco": "R$ 4.500.000",
+  "descricao_curta": "Luxo e segurança em um dos melhores condomínios da Barra."
+}

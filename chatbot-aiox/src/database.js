@@ -38,4 +38,4 @@ class DatabaseManager {
   }
 }
 
-module.exports = new DatabaseManager();
+export default new DatabaseManager();

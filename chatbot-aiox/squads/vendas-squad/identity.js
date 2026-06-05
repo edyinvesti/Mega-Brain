@@ -28,4 +28,4 @@ Exemplo de estrutura:
 ...`
 };
 
-module.exports = VENDEDOR_CONFIG;
+export default VENDEDOR_CONFIG;

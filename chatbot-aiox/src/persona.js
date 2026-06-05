@@ -33,4 +33,4 @@ Exemplo de fechamento (CTA):
 - "O que você acha de agendarmos uma simulação de financiamento agora?"`
 };
 
-module.exports = PERSONA;
+export default PERSONA;

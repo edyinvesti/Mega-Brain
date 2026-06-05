@@ -75,4 +75,4 @@ class MemoryManager {
   }
 }
 
-module.exports = new MemoryManager();
+export default new MemoryManager();

@@ -1,6 +1,7 @@
 import { Telegraf } from 'telegraf';
 import persona from './persona';
 import vendedor from '../squads/vendas-squad/identity';
+import trafego from '../squads/vendas-squad/trafego';
 import memory from './memory';
 import db from './database';
 import resilience from './resilience';
@@ -21,9 +22,21 @@ export default {
         });
 
         bot.command('vendas', (ctx) => {
-          ctx.reply('🔥 Agente Vendedor Ativado!');
-          // Nota: Em serverless, estados globais não persistem. 
-          // Idealmente salvaríamos a persona ativa no KV.
+          const userId = ctx.from.id;
+          activePersonas[userId] = 'vendedor';
+          ctx.reply('🔥 **AGENTE VENDEDOR ATIVADO!**\n\nPronto para criar posts orgânicos. Para anúncios pagos, digite /trafego.', { parse_mode: 'Markdown' });
+        });
+
+        bot.command('trafego', (ctx) => {
+          const userId = ctx.from.id;
+          activePersonas[userId] = 'trafego';
+          ctx.reply('📊 **GESTOR DE TRÁFEGO ONLINE!**\n\nMe diga qual imóvel quer anunciar e qual seu orçamento. Vou planejar seu público e estratégia no Meta Ads.', { parse_mode: 'Markdown' });
+        });
+
+        bot.command('alma', (ctx) => {
+          const userId = ctx.from.id;
+          activePersonas[userId] = 'alma';
+          ctx.reply('✨ **ALMA REATIVADA!**', { parse_mode: 'Markdown' });
         });
 
         bot.command('lista', (ctx) => {
@@ -45,8 +58,13 @@ export default {
           await memory.addMessage(userId, 'user', userMessage + extraContext, env);
           const history = await memory.getHistory(userId, env);
 
-          // 3. IA com Fallback
-          const response = await resilience.generateResponse([persona, ...history], env);
+          // 3. Seleciona a Persona Ativa
+          const activePersonaType = activePersonas[userId] || 'alma';
+          let currentPersona = persona;
+          if (activePersonaType === 'vendedor') currentPersona = vendedor;
+          if (activePersonaType === 'trafego') currentPersona = trafego;
+
+          // IA com Fallback
           
           await memory.addMessage(userId, 'assistant', response, env);
           await ctx.reply(response);

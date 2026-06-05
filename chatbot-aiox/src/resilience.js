@@ -43,7 +43,7 @@ class ResilientLLM {
         
         const response = await provider.client.chat.completions.create({
           model: provider.model,
-          messages: history, // Agora envia o histórico completo
+          messages: messages, // Corrigido de history para messages
         });
 
         return response.choices[0].message.content;
@@ -56,4 +56,4 @@ class ResilientLLM {
   }
 }
 
-module.exports = new ResilientLLM();
+export default new ResilientLLM();

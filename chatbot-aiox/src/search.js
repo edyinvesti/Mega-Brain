@@ -32,18 +32,3 @@ export async function searchWeb(query) {
     return null;
   }
 }
-
-/**
- * Detecta se a mensagem do usuário parece uma pergunta que precisa de pesquisa
- */
-function needsSearch(message) {
-  const triggers = [
-    'qual', 'quanto', 'selic', 'taxa', 'juros', 'notícia', 'noticia',
-    'price', 'preço', 'valor', 'atualiz', 'hoje', 'mercado', 'pesquisa',
-    'buscar', 'encontrar', 'inflação', 'ipca', 'fgts'
-  ];
-  const lower = message.toLowerCase();
-  return triggers.some(trigger => lower.includes(trigger));
-}
-
-module.exports = { searchWeb, needsSearch };

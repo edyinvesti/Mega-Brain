@@ -12,13 +12,13 @@ export default {
     if (request.method === 'POST') {
       try {
         const bot = new Telegraf(env.TELEGRAM_BOT_TOKEN);
-        
+
         // --- CONFIGURAÇÃO DO BOT ---
-        
+
         const activePersonas = {}; // Para gerenciar no contexto da requisição ou via KV brevemente
 
         bot.start((ctx) => {
-          ctx.reply('👋 Olá! Sou a ALMA no Cloudflare! 24h online.\n\nDigite /vendas para o especialista em Instagram ou /ajuda para ver comandos.');
+          ctx.reply('👋 Olá! Sou a no Cloudflare! 24h online.\n\nDigite /vendas para o especialista em Instagram ou /ajuda para ver comandos.');
         });
 
         bot.command('vendas', (ctx) => {
@@ -51,7 +51,7 @@ export default {
           // 1. Pesquisa Web (se necessário)
           let extraContext = '';
           if (await needsSearch(userMessage)) {
-             extraContext = await searchWeb(userMessage);
+            extraContext = await searchWeb(userMessage);
           }
 
           // 2. Memória (KV)
@@ -65,7 +65,7 @@ export default {
           if (activePersonaType === 'trafego') currentPersona = trafego;
 
           // IA com Fallback
-          
+
           await memory.addMessage(userId, 'assistant', response, env);
           await ctx.reply(response);
         });
@@ -73,7 +73,7 @@ export default {
         // processa o update
         const payload = await request.json();
         await bot.handleUpdate(payload);
-        
+
         return new Response('OK', { status: 200 });
       } catch (err) {
         console.error(err);

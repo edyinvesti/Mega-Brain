@@ -65,7 +65,8 @@ export default {
           if (activePersonaType === 'trafego') currentPersona = trafego;
 
           // IA com Fallback
-
+          const response = await resilience.generateResponse([currentPersona, ...history], env);
+          
           await memory.addMessage(userId, 'assistant', response, env);
           await ctx.reply(response);
         });
